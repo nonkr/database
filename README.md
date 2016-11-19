@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/iamalirezaj/database.svg?branch=master)](https://travis-ci.org/iamalirezaj/database)
+[![Build Status](https://travis-ci.org/iamalirezaj/database.svg?branch=develop)](https://travis-ci.org/iamalirezaj/database)
 [![Latest Stable Version](https://poser.pugx.org/josh/database/v/stable)](https://packagist.org/packages/josh/database)
 [![Total Downloads](https://poser.pugx.org/josh/database/downloads)](https://packagist.org/packages/josh/database)
 [![Latest Unstable Version](https://poser.pugx.org/josh/database/v/unstable)](//packagist.org/packages/josh/database)
