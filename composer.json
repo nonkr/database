@@ -19,9 +19,7 @@
     "psr-4": {
       "Josh\\Database\\": "src/"
     },
-    "files": [
-      "src/DB.php"
-    ]
+    "files": [ "DB.php" ]
   },
   "license": "MIT"
 }
