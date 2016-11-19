@@ -1,0 +1,26 @@
+{
+  "name": "josh/dbfile",
+  "description": "Database on file with php",
+  "authors": [
+    {
+      "name": "Alireza Josheghani",
+      "email": "a.josheghani@anetwork.ir"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "ext-json": "*",
+    "php": "^5.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Josh\\Database\\": "src/"
+    },
+    "files": [
+      "src/DB.php"
+    ]
+  }
+}
