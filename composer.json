@@ -1,10 +1,10 @@
 {
-  "name": "josh/dbfile",
-  "description": "Database on file with php",
+  "name": "josh/database",
+  "description": "Json database package",
   "authors": [
     {
       "name": "Alireza Josheghani",
-      "email": "a.josheghani@anetwork.ir"
+      "email": "josheghani.dev@gmail.com"
     }
   ],
   "minimum-stability": "dev",
@@ -13,7 +13,7 @@
     "php": "^5.4"
   },
   "require-dev": {
-    "phpunit/phpunit": "*"
+    "phpunit/phpunit": "^5.6"
   },
   "autoload": {
     "psr-4": {
