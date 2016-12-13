@@ -8,7 +8,6 @@ use Josh\Database\Exceptions\NotFoundException;
 
 class BaseDatabase
 {
-
     use Response , Conditions;
 
     /**
@@ -123,15 +122,16 @@ class BaseDatabase
 
                     foreach ($datas as $dbdata){
 
-                        $condition = $this->getTypeofCondition(
-                            $whereClosure['condition']
-                        );
+                        $condition = $whereClosure['condition'];
 
-                        if($condition !== false) {
-                            if($this->$condition($dbdata[$whereClosure['column']],$whereClosure['value'])) {
-                                $returnDatas[] = $dbdata;
-                            }
+                        $value1 = $dbdata[$whereClosure['column']];
+
+                        $value2 = $whereClosure['value'];
+
+                        if($this->doCondition($condition,$value1,$value2) !== false) {
+                            $returnDatas[] = $dbdata;
                         }
+
                     }
                 }
 
@@ -152,7 +152,6 @@ class BaseDatabase
      * @since  18 Nov 2016
      * @param  $table
      * @param  array $datas
-     * @return bool|string
      */
     protected function insertDatasToTable($table, array $datas)
     {

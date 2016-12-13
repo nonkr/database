@@ -6,23 +6,6 @@ trait Conditions
 {
 
     /**
-     * Get type of condition
-     * 
-     * @author Alireza Josheghani <josheghani.dev@gmail.com>
-     * @since  18 Nov 2016
-     * @param  $condition
-     * @return bool|string
-     */
-    public function getTypeofCondition($condition)
-    {
-        if($condition == '=') {
-            return 'equals';
-        }
-
-        return false;
-    }
-
-    /**
      * Equals condition
      *
      * @author Alireza Josheghani <josheghani.dev@gmail.com>
@@ -31,10 +14,16 @@ trait Conditions
      * @param  $value2
      * @return bool
      */
-    public function equals($value1, $value2)
+    public function doCondition($condition, $value1 , $value2)
     {
-        if($value1 === $value2) {
-            return true;
+        switch($condition){
+            case '=':
+            case '==': return $value1 == $value2; break;
+            case '>': return $value1 > $value2; break;
+            case '<': return $value1 < $value2; break;
+            case '!=': return $value1 != $value2; break;
+            case '<=': return $value1 <= $value2; break;
+            case '>=': return $value1 >= $value2; break;
         }
 
         return false;
