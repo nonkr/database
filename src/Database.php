@@ -125,4 +125,25 @@ class Database extends BaseDatabase
         return $datas[0];
     }
 
+    /**
+     * Get latest record
+     *
+     * @author Alireza Josheghani <josheghani.dev@gmail.com>
+     * @since  13 Dec 2016
+     */
+    public function latest()
+    {
+        $datas = $this->parseDatas([
+            'table' => $this->table, 'where' => $this->where
+        ]);
+
+        $count = count($datas) - 1;
+
+        if($this->typeOfResponse === 'json') {
+            $this->responseJson($datas[$count]);
+        }
+
+        return $datas[$count];
+    }
+
 }
