@@ -17,8 +17,7 @@
   "autoload": {
     "psr-4": {
       "Josh\\Database\\": "src/"
-    },
-    "files": [ "DB.php" ]
+    }
   },
   "license": "MIT"
 }
