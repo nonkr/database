@@ -30,7 +30,7 @@ class Database extends BaseDatabase
      */
     public function __construct($databasePath = null)
     {
-        if($databasePath !== null) {
+        if ($databasePath !== null) {
             return parent::__construct($databasePath);
         }
 
@@ -62,7 +62,7 @@ class Database extends BaseDatabase
      * @param  $value
      * @return $this
      */
-    public function where($column , $condition , $value)
+    public function where($column, $condition, $value)
     {
         $this->where[] = [
             'column' => $column, 'condition' => $condition, 'value' => $value
@@ -80,10 +80,10 @@ class Database extends BaseDatabase
      */
     public function insert(array $datas)
     {
-        if($this->isTable($this->table) instanceof NotFoundException) {
+        if ($this->isTable($this->table) instanceof NotFoundException) {
             $this->createTable($this->table);
         }
-        
+
         $this->insertDatasToTable($this->table, $datas);
     }
 
@@ -99,7 +99,7 @@ class Database extends BaseDatabase
             'table' => $this->table, 'where' => $this->where
         ]);
 
-        if($this->typeOfResponse === 'json') {
+        if ($this->typeOfResponse === 'json') {
             $this->responseJson($datas);
         }
 
@@ -114,11 +114,11 @@ class Database extends BaseDatabase
      */
     public function first()
     {
-        $datas = $this->parseDatas([
+        $datas = $this->getRawFromDatas($this->parseDatas([
             'table' => $this->table, 'where' => $this->where
-        ]);
+        ]));
 
-        if($this->typeOfResponse === 'json') {
+        if ($this->typeOfResponse === 'json') {
             $this->responseJson($datas[0]);
         }
 
@@ -133,17 +133,47 @@ class Database extends BaseDatabase
      */
     public function latest()
     {
-        $datas = $this->parseDatas([
+        $datas = $this->getRawFromDatas($this->parseDatas([
             'table' => $this->table, 'where' => $this->where
-        ]);
+        ]));
 
         $count = count($datas) - 1;
 
-        if($this->typeOfResponse === 'json') {
+        if ($this->typeOfResponse === 'json') {
             $this->responseJson($datas[$count]);
         }
 
         return $datas[$count];
     }
 
+    /**
+     * delete records
+     *
+     * @author Nonkr <nonkr@hotmail.com>
+     * @since  10 Jun 2017
+     */
+    public function delete()
+    {
+        $metadata = $this->getMetadataFromDatas($this->parseDatas([
+            'table' => $this->table, 'where' => $this->where
+        ]));
+
+        $this->deleteDataFromTable($this->table, $metadata);
+    }
+
+    /**
+     * update records
+     *
+     * @author Nonkr <nonkr@hotmail.com>
+     * @since  10 Jun 2017
+     * @param  array $newData
+     */
+    public function update(array $newData)
+    {
+        $metadata = $this->getMetadataFromDatas($this->parseDatas([
+            'table' => $this->table, 'where' => $this->where
+        ]));
+
+        $this->updateDatasFromTable($this->table, $metadata, $newData);
+    }
 }

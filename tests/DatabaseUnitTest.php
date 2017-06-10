@@ -45,9 +45,9 @@ class DatabaseUnitTest extends PHPUnit_Framework_TestCase {
             'email' => 'josheghani.dev@gmail.com'
         ]);
 
-        $results = DB::table('users')->where('id','=',1)->toArray()->first();
+        $results = DB::table('users')->where('_id','=',1)->toArray()->first();
 
-        $this->assertEquals($results['id'],1);
+        $this->assertEquals($results['_id'],1);
 
         $this->assertEquals($results['firstname'],'Alireza');
 
